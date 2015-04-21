@@ -209,5 +209,5 @@ angular.module('your_app_name', ['ionic', 'angularMoment', 'your_app_name.contro
 ;
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/feeds-categories');
+  $urlRouterProvider.otherwise('/app/profile');
 });

@@ -436,7 +436,7 @@ angular.module('your_app_name.controllers', [])
 
 	$scope.doRefresh = function() {
 		$ionicLoading.show({
-			template: 'Loading posts...'
+			template: 'Loading posts now...'
 		});
 
 		//Always bring me the latest posts => page=1
