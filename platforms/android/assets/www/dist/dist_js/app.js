@@ -516,50 +516,6 @@ angular.module('your_app_name.controllers', [])
 
 }])
 
-// SETTINGS
-.controller('SettingsCtrl', ['$scope', '$ionicActionSheet', '$state', function($scope, $ionicActionSheet, $state) {
-	$scope.airplaneMode = true;
-	$scope.wifi = false;
-	$scope.bluetooth = true;
-	$scope.personalHotspot = true;
-
-	$scope.checkOpt1 = true;
-	$scope.checkOpt2 = true;
-	$scope.checkOpt3 = false;
-
-	$scope.radioChoice = 'B';
-
-	// Triggered on a the logOut button click
-	$scope.showLogOutMenu = function() {
-
-		// Show the action sheet
-		var hideSheet = $ionicActionSheet.show({
-			//Here you can add some more buttons
-			// buttons: [
-			// { text: '<b>Share</b> This' },
-			// { text: 'Move' }
-			// ],
-			destructiveText: 'Logout',
-			titleText: 'Are you sure you want to logout? This app is awsome so I recommend you to stay.',
-			cancelText: 'Cancel',
-			cancel: function() {
-				// add cancel code..
-			},
-			buttonClicked: function(index) {
-				//Called when one of the non-destructive buttons is clicked,
-				//with the index of the button that was clicked and the button object.
-				//Return true to close the action sheet, or false to keep it opened.
-				return true;
-			},
-			destructiveButtonClicked: function(){
-				//Called when the destructive button is clicked.
-				//Return true to close the action sheet, or false to keep it opened.
-				$state.go('login');
-			}
-		});
-
-	};
-}])
 
 // FORMS
 .controller('FormsCtrl', ['$scope', function($scope) {
@@ -569,54 +525,6 @@ angular.module('your_app_name.controllers', [])
 // PROFILE
 .controller('ProfileCtrl', ['$scope', function($scope) {
 
-}])
-
-// TINDER CARDS
-.controller('TinderCardsCtrl', ['$scope', '$http', function($scope, $http) {
-
-	$scope.cards = [];
-
-
-	$scope.addCard = function(img, name) {
-		var newCard = {image: img, name: name};
-		newCard.id = Math.random();
-		$scope.cards.unshift(angular.extend({}, newCard));
-	};
-
-	$scope.addCards = function(count) {
-		$http.get('http://api.randomuser.me/?results=' + count).then(function(value) {
-			angular.forEach(value.data.results, function (v) {
-				$scope.addCard(v.user.picture.large, v.user.name.first + " " + v.user.name.last);
-			});
-		});
-	};
-
-	$scope.addFirstCards = function() {
-		$scope.addCard("https://dl.dropboxusercontent.com/u/30675090/envato/tinder-cards/left.png","Nope");
-		$scope.addCard("https://dl.dropboxusercontent.com/u/30675090/envato/tinder-cards/right.png", "Yes");
-	};
-
-	$scope.addFirstCards();
-	$scope.addCards(5);
-
-	$scope.cardDestroyed = function(index) {
-		$scope.cards.splice(index, 1);
-		$scope.addCards(1);
-	};
-
-	$scope.transitionOut = function(card) {
-		console.log('card transition out');
-	};
-
-	$scope.transitionRight = function(card) {
-		console.log('card removed to the right');
-		console.log(card);
-	};
-
-	$scope.transitionLeft = function(card) {
-		console.log('card removed to the left');
-		console.log(card);
-	};
 }])
 
 
@@ -746,6 +654,12 @@ angular.module('your_app_name.controllers', [])
 	};
 }])
 
+
+
+// audios
+.controller('audios', ['$scope', function($scope){
+    
+}])
 
 // LAYOUTS
 .controller('LayoutsCtrl', ['$scope', function($scope) {
@@ -1380,7 +1294,7 @@ angular.module('your_app_name.factories', [])
 
 ;
 
-angular.module("templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("audios.html","Here is the audio page.");
+angular.module("templates", []).run(["$templateCache", function($templateCache) {$templateCache.put("audios.html","<ion-view class=\"feeds-categories-view\">\r\n  <ion-nav-buttons side=\"left\">\r\n    <button menu-toggle=\"left\" class=\"button button-icon icon ion-navicon\"></button>\r\n  </ion-nav-buttons>\r\n  <ion-nav-title>\r\n    <span>Quotes</span>\r\n  </ion-nav-title>\r\n  <ion-content>\r\n    <div class=\"row categories-list\">\r\n        \r\n     <iframe width=\"100%\" height=\"600px\" src=\"http://dareresponse.com/quotes/book-quotes.php\"> </iframe>\r\n    </div>\r\n  </ion-content>\r\n</ion-view>\r\n");
 $templateCache.put("bookmarks.html","<ion-view class=\"bookmarks-view\">\n  <ion-nav-title>\n    <span>Bookmarks</span>\n  </ion-nav-title>\n  <ion-content>\n    <div ng-if=\"(bookmarks.wordpress.length == 0 && bookmarks.feeds.length == 0)\" class=\"row bookmarks-container\">\n      <div class=\"col col-center\">\n        <div class=\"empty-results\">\n          <i class=\"icon ion-bookmark\"></i>\n          <h3 class=\"no-bookmarks\">There\'s nothing here yet. Start exploring!</h3>\n        </div>\n      </div>\n    </div>\n    <ul ng-if=\"(bookmarks.wordpress.length > 0 || bookmarks.feeds.length > 0)\" class=\"bookmarks-list\">\n      <div ng-if=\"bookmarks.feeds.length > 0\" class=\"item item-divider\">\n        Feeds Bookmarks\n      </div>\n      <li class=\"bookmark-item\" ng-repeat=\"bookmark in bookmarks.feeds\">\n        <a ng-click=goToFeedPost(bookmark.link)>\n          <h2 class=\"post-title\" ng-bind-html=\"bookmark.title | rawHtml\"></h2>\n          <p class=\"post-date\">Posted <span class=\"post-time\" am-time-ago=\"bookmark.date\"></span></p>\n        </a>\n      </li>\n      <div ng-if=\"bookmarks.wordpress.length > 0\" class=\"item item-divider\">\n        Wordpress bookmarks\n      </div>\n      <li class=\"bookmark-item\" ng-repeat=\"bookmark in bookmarks.wordpress\">\n        <a ng-click=goToWordpressPost(bookmark.id)>\n          <h2 class=\"post-title\" ng-bind-html=\"bookmark.title | rawHtml\"></h2>\n          <p class=\"post-date\">Posted <span class=\"post-time\" am-time-ago=\"bookmark.date\"></span></p>\n        </a>\n      </li>\n    </ul>\n  </ion-content>\n</ion-view>\n");
 $templateCache.put("category-feeds.html","<ion-view class=\"category-feeds-view\">\n  <ion-nav-title>\n    <span>{{categoryTitle}} feeds</span>\n  </ion-nav-title>\n  <ion-content>\n    <div class=\"list category-feeds\">\n      <a ng-repeat=\"source in category_sources\" class=\"item item-icon-right\" ui-sref=\"app.feed-entries({categoryId: categoryId, sourceId: (source.title | slugify)})\">\n        <img class=\"thumbnail\" ng-src=\"{{source.image}}\"/>\n        <div>\n          <span class=\"title\">{{source.title}}</span>\n          <p class=\"description\">{{source.description}}</p>\n        </div>\n        <i class=\"icon ion-arrow-right-c\"></i>\n      </a>\n    </div>\n  </ion-content>\n</ion-view>\n");
 $templateCache.put("feed-entries.html","<ion-view class=\"feed-entries-view\">\n  <ion-nav-title>\n    <span>{{sourceTitle}}</span>\n  </ion-nav-title>\n  <ion-content>\n    <!-- Refresh to get the new posts -->\n    <ion-refresher pulling-text=\"Pull to refresh...\" on-refresh=\"doRefresh()\">\n    </ion-refresher>\n\n    <div class=\"entries-list\">\n      <div ng-repeat=\"entry in feed.entries\" class=\"list card entry-item\">\n        <div class=\"entry-heading item item-text-wrap\">\n          <h2 class=\"entry-title\" ng-bind-html=\"entry.title | rawHtml\"></h2>\n          <p class=\"entry-author\">\n            Published <span am-time-ago=\"entry.publishedDate\"></span>\n          </p>\n        </div>\n        <div class=\"entry-content item item-text-wrap\">\n          <p class=\"entry-excerpt\" ng-bind-html=\"entry.contentSnippet | rawHtml\"></p>\n          <div class=\"entry-actions row\">\n            <div class=\"actions col col-center col-66\">\n              <a class=\"button button-icon icon ion-bookmark\" ng-click=\"bookmarkPost(entry)\"></a>\n            </div>\n            <div class=\"read-more col col-center col-33\">\n              <a class=\"button button-small button-block button-assertive\" href=\"#\" ng-click=\"readMore(entry.link)\">\n                Read more\n              </a>\n            </div>\n          </div>\n        </div>\n      </div>\n    </div>\n  </ion-content>\n</ion-view>\n");
@@ -1395,7 +1309,7 @@ $templateCache.put("maps.html","<ion-view class=\"maps-view\">\n  <ion-nav-title
 $templateCache.put("miscellaneous.html","<ion-view class=\"miscellaneous-view\">\n  <ion-nav-buttons side=\"left\">\n    <button menu-toggle=\"left\" class=\"button button-icon icon ion-navicon\"></button>\n  </ion-nav-buttons>\n  <ion-nav-title>\n    <span>Miscellaneous</span>\n  </ion-nav-title>\n  <ion-content>\n    <div class=\"list miscellaneous-functionalities\">\n      <a class=\"item item-icon-left item-icon-right\" href=\"#\" ng-controller=\"InAppBrowserCtrl\" ng-click=\"openBrowser()\">\n        <i class=\"icon ion-ios-browsers-outline\"></i>\n        <div>\n          <span class=\"title\">In App Browser</span>\n          <p class=\"description\">Show web browser view with external links</p>\n        </div>\n        <i class=\"icon ion-arrow-right-c\"></i>\n      </a>\n      <a class=\"item item-icon-left item-icon-right\" ui-sref=\"app.maps\">\n        <i class=\"icon ion-map\"></i>\n        <div>\n          <span class=\"title\">Maps & GeoLocation</span>\n          <p class=\"description\">Show map & access user\'s current location</p>\n        </div>\n        <i class=\"icon ion-arrow-right-c\"></i>\n      </a>\n      <a class=\"item item-icon-left item-icon-right\" ui-sref=\"app.image-picker\">\n        <i class=\"icon ion-images\"></i>\n        <div>\n          <span class=\"title\">Image Picker</span>\n          <p class=\"description\">Select and share images from your phone</p>\n        </div>\n        <i class=\"icon ion-arrow-right-c\"></i>\n      </a>\n      <a class=\"item item-icon-left item-icon-right\" href=\"#\" ng-controller=\"AdsCtrl\" ng-click=\"manageAdMob()\">\n        <i class=\"icon ion-social-usd-outline\"></i>\n        <div>\n          <span class=\"title\">AdMob</span>\n          <p class=\"description\">Show Google AdMob mobile ads</p>\n        </div>\n      </a>\n      <a class=\"item item-icon-left item-icon-right\" href=\"#\" ng-controller=\"AdsCtrl\" ng-click=\"manageiAd()\">\n        <i class=\"icon ion-social-usd-outline\"></i>\n        <div>\n          <span class=\"title\">iAd</span>\n          <p class=\"description\">Show Apple iAd mobile ads</p>\n        </div>\n      </a>\n      <a class=\"item item-icon-left item-icon-right\" href=\"#\" ng-controller=\"RateApp\" ng-click=\"rateApp()\">\n        <i class=\"icon ion-ios-star-half\"></i>\n        <div>\n          <span class=\"title\">Rate the app</span>\n          <p class=\"description\">Rate this app in Google and Apple stores</p>\n        </div>\n      </a>\n      <a class=\"item item-icon-left item-icon-right\" href=\"#\" ng-controller=\"SendMailCtrl\" ng-click=\"sendMail()\">\n        <i class=\"icon ion-email\"></i>\n        <div>\n          <span class=\"title\">Send email</span>\n          <p class=\"description\">Access your phone native email sender provider</p>\n        </div>\n      </a>\n    </div>\n  </ion-content>\n</ion-view>\n");
 $templateCache.put("profile.html","<ion-view class=\"profile-view\">\n  <ion-nav-title>\n    <span>Profile</span>\n  </ion-nav-title>\n  <ion-content>\n    <div class=\"top-content row\">\n      <div class=\"profile-container\">\n        <img class=\"user-image\" ng-src=\"http://dareresponse.com/images/dare-app-logo.jpg\">\n        <div class=\"user-name\">DARE</div>\n        <div class=\"user-twitter\">www.DareResponse.com</div>\n      </div>\n      <div class=\"user-background-image\" style=\"background: url(http://dareresponse.com/images/dare-app-logo.jpg) no-repeat 0 50%\"></div>\n    </div>\n    <div class=\"bottom-content\">\n      <div class=\"user-bio\">\n        <p>If you suffer from anxiety or panic attacks you are advised to either just “mange” the anxiety or medicate it away. \n\nDARE is a bold new book based on hard science and years of experience helping people end their anxiety problems. \n\n            It teaches a brand new approach to end anxiety and panic attacks and get people back living life to the fullest.</p>\n\n<p>Accompanying the book is this app that helps you achieve your goal and an online community to support you. You get all the tools you need to break free from anxiety and ensure lasting success. \n\nThis blend of information, technology and community support gets fast results. </p>\n      </div>\n    </div>\n  </ion-content>\n</ion-view>\n");
 $templateCache.put("settings.html","<ion-view class=\"settings-view\">\n  <ion-nav-buttons side=\"left\">\n    <button menu-toggle=\"left\" class=\"button button-icon icon ion-navicon\"></button>\n  </ion-nav-buttons>\n  <ion-nav-title>\n    <span>Settings</span>\n  </ion-nav-title>\n  <ion-content>\n    <ul class=\"list\">\n\n      <div class=\"item item-divider\">TOGGLE</div>\n\n      <ion-toggle ng-model=\"airplaneMode\" toggle-class=\"toggle-assertive\">Airplane Mode</ion-toggle>\n      <ion-toggle ng-model=\"wifi\" toggle-class=\"toggle-positive\">Wi-Fi</ion-toggle>\n      <ion-toggle ng-model=\"bluetooth\" toggle-class=\"toggle-calm\">Bluetooth</ion-toggle>\n      <ion-toggle ng-model=\"personalHotspot\" toggle-class=\"toggle-dark\">Personal Hotspot</ion-toggle>\n\n      <div class=\"item item-divider\">CHECKBOXES</div>\n\n      <ion-checkbox ng-model=\"checkOpt1\">Option 1</ion-checkbox>\n      <ion-checkbox ng-model=\"checkOpt2\">Option 2</ion-checkbox>\n      <ion-checkbox ng-model=\"checkOpt3\">Option 3</ion-checkbox>\n\n      <div class=\"item item-divider\">RADIO</div>\n\n      <ion-radio ng-model=\"radioChoice\" ng-value=\"\'A\'\">Choose A</ion-radio>\n      <ion-radio ng-model=\"radioChoice\" ng-value=\"\'B\'\">Choose B</ion-radio>\n      <ion-radio ng-model=\"radioChoice\" ng-value=\"\'C\'\">Choose C</ion-radio>\n\n      <div class=\"item item-divider\">RANGES</div>\n\n      <div class=\"range\">\n        <i class=\"icon ion-volume-low\"></i>\n        <input type=\"range\" name=\"volume\">\n        <i class=\"icon ion-volume-high\"></i>\n      </div>\n      <div class=\"item range range-positive\">\n        <i class=\"icon ion-ios-sunny-outline\"></i>\n        <input type=\"range\" name=\"volume\" min=\"0\" max=\"100\" value=\"33\">\n        <i class=\"icon ion-ios-sunny\"></i>\n      </div>\n\n      <div class=\"item item-divider\"></div>\n\n      <a class=\"item logout-option\" ng-click=\"showLogOutMenu()\">\n        Logout\n      </a>\n    </ul>\n  </ion-content>\n</ion-view>\n");
-$templateCache.put("side-menu.html","<ion-side-menus enable-menu-with-back-views=\"false\">\r\n  <ion-side-menu-content class=\"post-size-14px\">\r\n    <ion-nav-bar class=\"bar app-top-bar\">\r\n      <ion-nav-back-button>\r\n      </ion-nav-back-button>\r\n      <ion-nav-buttons side=\"left\">\r\n        <button class=\"button button-icon button-clear ion-navicon\" menu-toggle=\"left\">\r\n        </button>\r\n      </ion-nav-buttons>\r\n    </ion-nav-bar>\r\n    <ion-nav-view name=\"menuContent\"></ion-nav-view>\r\n  </ion-side-menu-content>\r\n\r\n  <ion-side-menu side=\"left\" class=\"main-menu\" expose-aside-when=\"large\">\r\n    <ion-content>\r\n      <ion-list>\r\n        <ion-item class=\"heading-item item item-avatar\" nav-clear menu-close ui-sref=\"app.profile\">\r\n          <img ng-src=\"http://dareresponse.com/images/dare-app-logo.jpg\">\r\n          <h2 class=\"greeting\">Hi </h2>\r\n          <p class=\"message\">Welcome back</p>\r\n        </ion-item>\r\n          \r\n          \r\n            <ion-item class=\"item-icon-left\" nav-clear menu-close ui-sref=\"app.feeds-categories\">\r\n          <i class=\"icon ion-ios-musical-notes\"></i>\r\n          <h2 class=\"menu-text\">Audios</h2>\r\n        </ion-item>\r\n            \r\n      \r\n       \r\n        \r\n        <ion-item class=\"item-icon-left\" nav-clear menu-close ui-sref=\"app.feeds-categories\">\r\n          <i class=\"icon ion-person-stalker\"></i>\r\n          <h2 class=\"menu-text\">Inspire</h2>\r\n        </ion-item>\r\n          \r\n         \r\n     \r\n          \r\n          <ion-item class=\"item-icon-left\" nav-clear menu-close ui-sref=\"app.bookmarks\">\r\n          <i class=\"icon ion-bookmark\"></i>\r\n          <h2 class=\"menu-text\">Book marked pages</h2>\r\n        </ion-item>\r\n          \r\n           <ion-item class=\"item-icon-left\" nav-clear menu-close ui-sref=\"app.wordpress\">\r\n          <i class=\"icon ion-ios-checkmark\"></i>\r\n          <h2 class=\"menu-text\">DARE Blogs</h2>\r\n        </ion-item>\r\n          \r\n            <ion-item class=\"item-icon-left\" nav-clear menu-close ui-sref=\"app.\">\r\n          <i class=\"icon ion-ios-checkmark\"></i>\r\n          <h2 class=\"menu-text\">DARE Blogs</h2>\r\n        </ion-item>\r\n          \r\n       \r\n     \r\n\r\n    </ion-list>\r\n    </ion-content>\r\n  </ion-side-menu>\r\n</ion-side-menus>\r\n");
+$templateCache.put("side-menu.html","<ion-side-menus enable-menu-with-back-views=\"false\">\r\n  <ion-side-menu-content class=\"post-size-14px\">\r\n    <ion-nav-bar class=\"bar app-top-bar\">\r\n      <ion-nav-back-button>\r\n      </ion-nav-back-button>\r\n      <ion-nav-buttons side=\"left\">\r\n        <button class=\"button button-icon button-clear ion-navicon\" menu-toggle=\"left\">\r\n        </button>\r\n      </ion-nav-buttons>\r\n    </ion-nav-bar>\r\n    <ion-nav-view name=\"menuContent\"></ion-nav-view>\r\n  </ion-side-menu-content>\r\n\r\n  <ion-side-menu side=\"left\" class=\"main-menu\" expose-aside-when=\"large\">\r\n    <ion-content>\r\n      <ion-list>\r\n        <ion-item class=\"heading-item item item-avatar\" nav-clear menu-close ui-sref=\"app.profile\">\r\n          <img ng-src=\"http://dareresponse.com/images/dare-app-logo.jpg\">\r\n          <h2 class=\"greeting\">Hi </h2>\r\n          <p class=\"message\">Welcome back</p>\r\n        </ion-item>\r\n          \r\n            <ion-item class=\"item-icon-left\" nav-clear menu-close ui-sref=\"app.wordpress\">\r\n          <i class=\"icon ion-ios-musical-notes\"></i>\r\n          <h2 class=\"menu-text\">Audios</h2>\r\n        </ion-item>\r\n            \r\n            <ion-item class=\"item-icon-left\" nav-clear menu-close ui-sref=\"app.audios\">\r\n          <i class=\"icon ion-person-stalker\"></i>\r\n          <h2 class=\"menu-text\">Inspire</h2>\r\n        </ion-item>\r\n          \r\n           <ion-item class=\"item-icon-left\" nav-clear menu-close ui-sref=\"app.feeds-categories\">\r\n          <i class=\"icon ion-ios-checkmark\"></i>\r\n          <h2 class=\"menu-text\">DARE Blogs</h2>\r\n        </ion-item>\r\n          \r\n            <ion-item class=\"item-icon-left\" nav-clear menu-close ui-sref=\"app.bookmarks\">\r\n          <i class=\"icon ion-bookmark\"></i>\r\n          <h2 class=\"menu-text\">Book marked pages</h2>\r\n        </ion-item>\r\n          \r\n\r\n    </ion-list>\r\n    </ion-content>\r\n  </ion-side-menu>\r\n</ion-side-menus>\r\n");
 $templateCache.put("signup.html","<ion-view class=\"signup-view\">\n  <ion-content scroll=\"false\">\n    <div class=\"row\">\n      <div class=\"col col-center\">\n        <div class=\"card sign-up-container\">\n          <form name=\"signup_form\" class=\"\" novalidate>\n            <div class=\"item item-body\">\n              <label class=\"item item-input\">\n                <input type=\"email\" placeholder=\"Email\" name=\"user_email\" ng-model=\"user.email\" required>\n              </label>\n              <label class=\"item item-input\" show-hide-container>\n                <input type=\"password\" placeholder=\"Password\" name=\"user_password\" ng-model=\"user.password\" required show-hide-input>\n              </label>\n            </div>\n            <div class=\"item item-body bottom-content\">\n              <button type=\"submit\" class=\"button button-positive button-block\" ng-click=\"doSignUp()\" ng-disabled=\"signup_form.$invalid\">\n                Sign Up\n              </button>\n            </div>\n          </form>\n        </div>\n        <div class=\"alternative-actions\">\n          <button class=\"log-in button button-small button-clear button-light\" ng-click=\"goToLogIn()\">\n            Log In\n          </button>\n        </div>\n      </div>\n    </div>\n  </ion-content>\n</ion-view>\n");
 $templateCache.put("slider.html","<ion-view class=\"slider-view\">\n  <ion-nav-title>\n    <span>Slider</span>\n  </ion-nav-title>\n  <ion-content scroll=\"false\">\n    <ion-slide-box show-pager=\"true\">\n      <ion-slide ng-repeat=\"i in [1,2,3,4,5]\">\n        <div class=\"list card\">\n          <div class=\"item item-image\">\n            <img ng-src=\"http://lorempixel.com/300/200/nature?v={{i}}\">\n          </div>\n          <div class=\"item item-body\">\n            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>\n          </div>\n        </div>\n      </ion-slide>\n    </ion-slide-box>\n  </ion-content>\n</ion-view>\n");
 $templateCache.put("tinder-cards.html","<ion-view class=\"tinder-cards-view\">\n  <ion-nav-title>\n    <span>Tinder Cards</span>\n  </ion-nav-title>\n  <ion-content scroll=\"false\">\n    <td-cards>\n      <td-card id=\"td-card\" ng-repeat=\"card in cards\"\n      on-transition-left=\"transitionLeft(card)\"\n      on-transition-right=\"transitionRight(card)\"\n      on-transition-out=\"transitionOut(card)\"\n      on-destroy=\"cardDestroyed($index)\"\n      on-swipe-left=\"cardSwipedLeft($index)\"\n      on-swipe-right=\"cardSwipedRight($index)\"\n      on-partial-swipe=\"cardPartialSwipe(amt)\">\n        <div class=\"image\">\n          <div class=\"no-text overlayBox\">\n            <div class=\"noBox boxed\">\n              Nope\n            </div>\n          </div>\n          <img ng-src=\"{{card.image}}\">\n          <div class=\"yes-text overlayBox\">\n            <div class=\"yesBox boxed\">\n              Yes\n            </div>\n          </div>\n        </div>\n        <div class=\"title\">\n          {{card.name}}\n        </div>\n      </td-card>\n    </td-cards>\n  </ion-content>\n</ion-view>\n");

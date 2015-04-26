@@ -301,50 +301,6 @@ angular.module('your_app_name.controllers', [])
 
 })
 
-// SETTINGS
-.controller('SettingsCtrl', function($scope, $ionicActionSheet, $state) {
-	$scope.airplaneMode = true;
-	$scope.wifi = false;
-	$scope.bluetooth = true;
-	$scope.personalHotspot = true;
-
-	$scope.checkOpt1 = true;
-	$scope.checkOpt2 = true;
-	$scope.checkOpt3 = false;
-
-	$scope.radioChoice = 'B';
-
-	// Triggered on a the logOut button click
-	$scope.showLogOutMenu = function() {
-
-		// Show the action sheet
-		var hideSheet = $ionicActionSheet.show({
-			//Here you can add some more buttons
-			// buttons: [
-			// { text: '<b>Share</b> This' },
-			// { text: 'Move' }
-			// ],
-			destructiveText: 'Logout',
-			titleText: 'Are you sure you want to logout? This app is awsome so I recommend you to stay.',
-			cancelText: 'Cancel',
-			cancel: function() {
-				// add cancel code..
-			},
-			buttonClicked: function(index) {
-				//Called when one of the non-destructive buttons is clicked,
-				//with the index of the button that was clicked and the button object.
-				//Return true to close the action sheet, or false to keep it opened.
-				return true;
-			},
-			destructiveButtonClicked: function(){
-				//Called when the destructive button is clicked.
-				//Return true to close the action sheet, or false to keep it opened.
-				$state.go('login');
-			}
-		});
-
-	};
-})
 
 // FORMS
 .controller('FormsCtrl', function($scope) {
@@ -354,54 +310,6 @@ angular.module('your_app_name.controllers', [])
 // PROFILE
 .controller('ProfileCtrl', function($scope) {
 
-})
-
-// TINDER CARDS
-.controller('TinderCardsCtrl', function($scope, $http) {
-
-	$scope.cards = [];
-
-
-	$scope.addCard = function(img, name) {
-		var newCard = {image: img, name: name};
-		newCard.id = Math.random();
-		$scope.cards.unshift(angular.extend({}, newCard));
-	};
-
-	$scope.addCards = function(count) {
-		$http.get('http://api.randomuser.me/?results=' + count).then(function(value) {
-			angular.forEach(value.data.results, function (v) {
-				$scope.addCard(v.user.picture.large, v.user.name.first + " " + v.user.name.last);
-			});
-		});
-	};
-
-	$scope.addFirstCards = function() {
-		$scope.addCard("https://dl.dropboxusercontent.com/u/30675090/envato/tinder-cards/left.png","Nope");
-		$scope.addCard("https://dl.dropboxusercontent.com/u/30675090/envato/tinder-cards/right.png", "Yes");
-	};
-
-	$scope.addFirstCards();
-	$scope.addCards(5);
-
-	$scope.cardDestroyed = function(index) {
-		$scope.cards.splice(index, 1);
-		$scope.addCards(1);
-	};
-
-	$scope.transitionOut = function(card) {
-		console.log('card transition out');
-	};
-
-	$scope.transitionRight = function(card) {
-		console.log('card removed to the right');
-		console.log(card);
-	};
-
-	$scope.transitionLeft = function(card) {
-		console.log('card removed to the left');
-		console.log(card);
-	};
 })
 
 
