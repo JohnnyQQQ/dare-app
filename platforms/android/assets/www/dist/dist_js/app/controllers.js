@@ -436,7 +436,7 @@ angular.module('your_app_name.controllers', [])
 
 	$scope.doRefresh = function() {
 		$ionicLoading.show({
-			template: 'Loading posts...'
+			template: 'Loading posts now...'
 		});
 
 		//Always bring me the latest posts => page=1
@@ -531,6 +531,12 @@ angular.module('your_app_name.controllers', [])
 	};
 }])
 
+
+
+// audios
+.controller('audios', ['$scope', function($scope){
+    
+}])
 
 // LAYOUTS
 .controller('LayoutsCtrl', ['$scope', function($scope) {

@@ -89,15 +89,6 @@ angular.module('your_app_name', ['ionic', 'angularMoment', 'your_app_name.contro
     }
   })
 
-  .state('app.tinder-cards', {
-    url: "/layouts/tinder-cards",
-    views: {
-      'menuContent': {
-        templateUrl: "tinder-cards.html",
-        controller: 'TinderCardsCtrl'
-      }
-    }
-  })
 
   .state('app.slider', {
     url: "/layouts/slider",
@@ -182,6 +173,16 @@ angular.module('your_app_name', ['ionic', 'angularMoment', 'your_app_name.contro
       'menuContent': {
         templateUrl: "forms.html",
         controller: 'FormsCtrl'
+      }
+    }
+  })
+  // Audio app page
+   .state('app.audios', {
+    url: "/audios",
+    views: {
+      'menuContent': {
+        templateUrl: "audios.html",
+        controller: 'audios'
       }
     }
   })

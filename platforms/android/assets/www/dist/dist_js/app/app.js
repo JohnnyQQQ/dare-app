@@ -89,15 +89,6 @@ angular.module('your_app_name', ['ionic', 'angularMoment', 'your_app_name.contro
     }
   })
 
-  .state('app.tinder-cards', {
-    url: "/layouts/tinder-cards",
-    views: {
-      'menuContent': {
-        templateUrl: "tinder-cards.html",
-        controller: 'TinderCardsCtrl'
-      }
-    }
-  })
 
   .state('app.slider', {
     url: "/layouts/slider",
@@ -185,6 +176,16 @@ angular.module('your_app_name', ['ionic', 'angularMoment', 'your_app_name.contro
       }
     }
   })
+  // Audio app page
+   .state('app.audios', {
+    url: "/audios",
+    views: {
+      'menuContent': {
+        templateUrl: "audios.html",
+        controller: 'audios'
+      }
+    }
+  })
 
   .state('app.profile', {
     url: "/profile",
@@ -209,5 +210,5 @@ angular.module('your_app_name', ['ionic', 'angularMoment', 'your_app_name.contro
 ;
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/feeds-categories');
+  $urlRouterProvider.otherwise('/app/profile');
 }]);
