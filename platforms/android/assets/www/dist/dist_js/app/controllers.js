@@ -446,6 +446,11 @@ angular.module('your_app_name.controllers', [])
     
 }])
 
+// mediaplayer
+.controller('media-player', ['$scope', function($scope){
+    
+}])
+
 // LAYOUTS
 .controller('LayoutsCtrl', ['$scope', function($scope) {
 

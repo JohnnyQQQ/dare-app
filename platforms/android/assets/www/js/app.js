@@ -112,6 +112,9 @@ angular.module('your_app_name', ['ionic', 'angularMoment', 'your_app_name.contro
       }
     }
   })
+  
+
+
 
   .state('app.category-feeds', {
     url: "/category-feeds/:categoryId",
@@ -176,7 +179,7 @@ angular.module('your_app_name', ['ionic', 'angularMoment', 'your_app_name.contro
       }
     }
   })
-  // Audio app page
+  // Audio app page Jquirke 20150426 
    .state('app.audios', {
     url: "/audios",
     views: {
@@ -186,6 +189,19 @@ angular.module('your_app_name', ['ionic', 'angularMoment', 'your_app_name.contro
       }
     }
   })
+  
+    //media player Jquirke 20150426  
+  .state('app.media-player', {
+    url: "/media-player",
+    views: {
+      'menuContent': {
+        templateUrl: "media-player.html",
+        controller: 'media-player'
+      }
+    }
+  })
+  
+  
 
   .state('app.profile', {
     url: "/profile",
