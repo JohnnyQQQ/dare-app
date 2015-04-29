@@ -88,6 +88,17 @@ angular.module('your_app_name', ['ionic', 'angularMoment', 'your_app_name.contro
       }
     }
   })
+  
+    //Community
+  .state('app.community', {
+    url: "/community",
+    views: {
+      'menuContent': {
+        templateUrl: "community.html",
+        controller: 'communityCtrl'
+      }
+    }
+  })
 
 
   .state('app.slider', {
