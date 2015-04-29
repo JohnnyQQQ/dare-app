@@ -312,6 +312,32 @@ angular.module('your_app_name.controllers', [])
 
 })
 
+// AUdio Page
+.controller('audiopage', function($scope) {
+
+})
+
+// Motivation
+.controller('motivation', function($scope) {
+
+})
+
+// Dare Pesponse
+.controller('dareresponse', function($scope) {
+
+})
+
+// Succes
+.controller('success', function($scope) {
+
+})
+
+// Deep release
+.controller('deeprelease', function($scope) {
+
+})
+
+
 
 // BOOKMARKS
 .controller('BookMarksCtrl', function($scope, $rootScope, BookMarkService, $state) {

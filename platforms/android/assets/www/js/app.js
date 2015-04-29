@@ -201,8 +201,66 @@ angular.module('your_app_name', ['ionic', 'angularMoment', 'your_app_name.contro
     }
   })
   
-  
 
+  
+      //media player Jquirke 20150426  
+  .state('app.audiopage', {
+    url: "/audiopage",
+    views: {
+      'menuContent': {
+        templateUrl: "audiopage.html",
+        controller: 'audiopage'
+      }
+    }
+  })
+  
+ 
+ //media Audios Jquirke 20150426  
+  .state('app.motivation', {
+    url: "/motivation",
+    views: {
+      'menuContent': {
+        templateUrl: "motivation.html",
+        controller: 'motivation'
+      }
+    }
+  })
+  
+     .state('app.dareresponse', {
+    url: "/dareresponse",
+    views: {
+      'menuContent': {
+        templateUrl: "dareresponse.html",
+        controller: 'dareresponse'
+      }
+    }
+  })
+  
+  
+      .state('app.deeprelease', {
+    url: "/deeprelease",
+    views: {
+      'menuContent': {
+        templateUrl: "deeprelease.html",
+        controller: 'deeprelease'
+      }
+    }
+  })
+  
+      
+   .state('app.success', {
+    url: "/success",
+    views: {
+      'menuContent': {
+        templateUrl: "success.html",
+        controller: 'success'
+      }
+    }
+  })
+  
+  
+  ///////////////////////////////////////////////////
+  
   .state('app.profile', {
     url: "/profile",
     views: {
