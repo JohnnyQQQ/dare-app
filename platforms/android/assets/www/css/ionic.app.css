@@ -7961,14 +7961,14 @@ ion-side-menu .heading-item .message {
   z-index: -1;
   background-size: cover !important; }
 .profile-view .bottom-content {
-  padding: 0px;
+  padding: 10px;
   background-color: #fff;
   min-height: 55vh;
   position: relative; }
   .profile-view .bottom-content .user-bio {
     text-align: center;
     margin: 6px 30px;
-    padding: 6px 0px; }
+    padding: 10px 10px 10px 10px; }
 
 .bookmarks-view {
   background-color: #EAEAEA; }
