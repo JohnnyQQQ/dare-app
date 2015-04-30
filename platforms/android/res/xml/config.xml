@@ -23,11 +23,11 @@
     <icon density="xxhdpi" src="resources\android\icon\drawable-xxhdpi-icon.png" />
     <icon density="xxxhdpi" src="resources\android\icon\drawable-xxxhdpi-icon.png" />
     <name>Dare App</name>
-    <description>
-       Application for Dare a book by Barry McDonagh
+    <description>
+       Application for Dare a book by Barry McDonagh
     </description>
-    <author email="john@johnquirke.ie" href="http://johnquirke.ie/">
-    StartApp Labs
+    <author email="john@johnquirke.ie" href="http://johnquirke.ie/">
+    StartApp Labs
   </author>
     <content src="index.html" />
     <access origin="*" />
