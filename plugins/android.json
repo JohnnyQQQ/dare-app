@@ -19,6 +19,26 @@
                         {
                             "xml": "<feature name=\"InAppBrowser\"><param name=\"android-package\" value=\"org.apache.cordova.inappbrowser.InAppBrowser\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Notification\"><param name=\"android-package\" value=\"org.apache.cordova.dialogs.Notification\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"ImagePicker\"><param name=\"android-package\" value=\"com.synconset.ImagePicker\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Globalization\"><param name=\"android-package\" value=\"org.apache.cordova.globalization.Globalization\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"AppRate\"><param name=\"android-package\" value=\"org.pushandplay.cordova.apprate.AppRate\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"AdMob\"><param name=\"android-package\" value=\"com.rjfun.cordova.admob.AdMobPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -41,6 +61,42 @@
                         {
                             "xml": "<uses-permission android:name=\"android.permission.READ_PHONE_STATE\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_COARSE_LOCATION\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_FINE_LOCATION\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
+                            "count": 1
+                        }
+                    ],
+                    "/manifest/application": [
+                        {
+                            "xml": "<activity android:label=\"@string/multi_app_name\" android:name=\"com.synconset.MultiImageChooserActivity\" android:theme=\"@android:style/Theme.Holo.Light\"><intent-filter /></activity>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<meta-data android:name=\"com.google.android.gms.version\" android:value=\"@integer/google_play_services_version\" />",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<activity android:configChanges=\"keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize\" android:name=\"com.google.android.gms.ads.AdActivity\" android:theme=\"@android:style/Theme.Translucent\" />",
+                            "count": 1
+                        }
+                    ],
+                    "/manifest": [
+                        {
+                            "xml": "<uses-permission android:name=\"android.permission.WRITE_EXTERNAL_STORAGE\" />",
+                            "count": 1
                         }
                     ]
                 }
@@ -53,11 +109,38 @@
         },
         "org.apache.cordova.inappbrowser": {
             "PACKAGE_NAME": "com.startapplabs.ionFullApp"
+        },
+        "org.apache.cordova.dialogs": {
+            "PACKAGE_NAME": "ie.johnquirke.dareapp"
+        },
+        "com.rjfun.cordova.iad": {
+            "PACKAGE_NAME": "ie.johnquirke.dareapp"
+        },
+        "org.apache.cordova.geolocation": {
+            "PACKAGE_NAME": "ie.johnquirke.dareapp"
+        },
+        "com.synconset.imagepicker": {
+            "PACKAGE_NAME": "ie.johnquirke.dareapp"
+        },
+        "org.pushandplay.cordova.apprate": {
+            "PACKAGE_NAME": "ie.johnquirke.dareapp"
+        },
+        "com.google.playservices": {
+            "PACKAGE_NAME": "ie.johnquirke.dareapp"
+        },
+        "com.google.cordova.admob": {
+            "PACKAGE_NAME": "ie.johnquirke.dareapp"
         }
     },
     "dependent_plugins": {
         "org.apache.cordova.file": {
             "PACKAGE_NAME": "com.startapplabs.ionFullApp"
+        },
+        "com.rjfun.cordova.extension": {
+            "PACKAGE_NAME": "ie.johnquirke.dareapp"
+        },
+        "org.apache.cordova.globalization": {
+            "PACKAGE_NAME": "ie.johnquirke.dareapp"
         }
     }
 }

@@ -1,5 +1,5 @@
 {
-    "version": "2.7.4",
+    "version": "2.7.5",
     "name": "com.google.cordova.admob",
     "cordova_name": "AdMob Plugin Pro",
     "description": "Powerful Ad Plugin for Google AdMob and DFP. Easy use, show mobile Ad with single line of JavaScript. Stable and up to date with latest SDK. Compatible with Cordova CLI, PhoneGap Build, Intel XDK/Crosswalk, Google ChromeApp, IBM Worklight.",

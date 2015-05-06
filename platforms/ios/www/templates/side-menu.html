@@ -1,0 +1,60 @@
+<ion-side-menus enable-menu-with-back-views="false">
+  <ion-side-menu-content class="post-size-14px">
+    <ion-nav-bar class="bar app-top-bar">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+    <ion-nav-view name="menuContent"></ion-nav-view>
+  </ion-side-menu-content>
+
+  <ion-side-menu side="left" class="main-menu" expose-aside-when="large">
+    <ion-content>
+      <ion-list>
+        <ion-item class="heading-item item item-avatar" nav-clear menu-close ui-sref="app.profile">
+          <img ng-src="img/dare-app-logo.png">
+          <h2 class="greeting">Hi </h2>
+          <p class="message">Welcome back</p>
+        </ion-item>
+          
+          
+                   <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.layouts">
+          <i class="icon ion-asterisk"></i>
+          <h2 class="menu-text">Audio links</h2>
+        </ion-item>
+                  
+            <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.audios">
+          <i class="icon ion-chatbox"></i>
+          <h2 class="menu-text">Inspire</h2>
+        </ion-item>
+          
+            <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.community">
+          <i class="icon ion-person-stalker"></i>
+          <h2 class="menu-text">Community</h2>
+        </ion-item>
+          
+          
+          
+            <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.wordpress">
+          <i class="icon ion-ios-checkmark"></i>
+          <h2 class="menu-text">DARE Website</h2>
+        </ion-item>
+          
+           
+         
+            
+            <ion-item class="item-icon-left" nav-clear menu-close ui-sref="app.bookmarks">
+          <i class="icon ion-bookmark"></i>
+          <h2 class="menu-text">Book marked pages</h2>
+        </ion-item>
+          
+         
+          
+
+    </ion-list>
+    </ion-content>
+  </ion-side-menu>
+</ion-side-menus>

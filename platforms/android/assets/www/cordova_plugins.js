@@ -22,6 +22,53 @@ module.exports = [
         ]
     },
     {
+        "file": "plugins/org.apache.cordova.dialogs/www/notification.js",
+        "id": "org.apache.cordova.dialogs.notification",
+        "merges": [
+            "navigator.notification"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.dialogs/www/android/notification.js",
+        "id": "org.apache.cordova.dialogs.notification_android",
+        "merges": [
+            "navigator.notification"
+        ]
+    },
+    {
+        "file": "plugins/com.rjfun.cordova.iad/www/iAd.js",
+        "id": "com.rjfun.cordova.iad.iAd",
+        "clobbers": [
+            "window.iAd"
+        ]
+    },
+    {
+        "file": "plugins/com.synconset.imagepicker/www/imagepicker.js",
+        "id": "com.synconset.imagepicker.ImagePicker",
+        "clobbers": [
+            "plugins.imagePicker"
+        ]
+    },
+    {
+        "file": "plugins/org.pushandplay.cordova.apprate/www/AppRate.js",
+        "id": "org.pushandplay.cordova.apprate.AppRate",
+        "clobbers": [
+            "AppRate"
+        ]
+    },
+    {
+        "file": "plugins/org.pushandplay.cordova.apprate/www/locales.js",
+        "id": "org.pushandplay.cordova.apprate.locales",
+        "runs": true
+    },
+    {
+        "file": "plugins/com.google.cordova.admob/www/AdMob.js",
+        "id": "com.google.cordova.admob.AdMob",
+        "clobbers": [
+            "window.AdMob"
+        ]
+    },
+    {
         "file": "plugins/org.apache.cordova.file/www/DirectoryEntry.js",
         "id": "org.apache.cordova.file.DirectoryEntry",
         "clobbers": [
@@ -166,6 +213,20 @@ module.exports = [
             "cordova"
         ],
         "runs": true
+    },
+    {
+        "file": "plugins/org.apache.cordova.globalization/www/GlobalizationError.js",
+        "id": "org.apache.cordova.globalization.GlobalizationError",
+        "clobbers": [
+            "window.GlobalizationError"
+        ]
+    },
+    {
+        "file": "plugins/org.apache.cordova.globalization/www/globalization.js",
+        "id": "org.apache.cordova.globalization.globalization",
+        "clobbers": [
+            "navigator.globalization"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -173,7 +234,16 @@ module.exports.metadata =
 {
     "org.apache.cordova.media": "0.2.16",
     "org.apache.cordova.inappbrowser": "0.6.0",
-    "org.apache.cordova.file": "1.3.3"
+    "org.apache.cordova.dialogs": "0.3.0",
+    "com.rjfun.cordova.iad": "2.0.4",
+    "org.apache.cordova.geolocation": "0.3.12",
+    "com.synconset.imagepicker": "1.0.6",
+    "org.pushandplay.cordova.apprate": "1.1.7",
+    "com.google.playservices": "21.0.0",
+    "com.google.cordova.admob": "2.7.5",
+    "org.apache.cordova.file": "1.3.3",
+    "com.rjfun.cordova.extension": "1.0.6",
+    "org.apache.cordova.globalization": "0.3.4"
 }
 // BOTTOM OF METADATA
 });
